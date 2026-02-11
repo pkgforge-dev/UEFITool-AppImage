@@ -11,7 +11,7 @@ export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}
 export ICON=https://raw.githubusercontent.com/LongSoft/UEFITool/refs/heads/new_engine/UEFITool/icons/uefitool_256x256.png
 
 # Deploy dependencies
-quick-sharun /usr/bin/uefitool /usr/lib/qt6/plugins/platformthemes/libqt6ct.so
+quick-sharun /usr/bin/uefitool
 
 # Additional changes can be done in between here
 
