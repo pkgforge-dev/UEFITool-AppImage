@@ -12,7 +12,7 @@ export ICON=https://raw.githubusercontent.com/LongSoft/UEFITool/refs/heads/new_e
 export DESKTOP=DUMMY
 
 # Deploy dependencies
-quick-sharun /usr/bin/*
+quick-sharun /usr/bin/UEFITool /usr/bin/UEFIExtract /usr/bin/UEFIFind
 
 # Additional changes can be done in between here
 
