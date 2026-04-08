@@ -6,21 +6,26 @@ ARCH=$(uname -m)
 
 echo "Installing package dependencies..."
 echo "---------------------------------------------------------------"
-pacman -Syu --noconfirm qt6ct
+pacman -Syu --noconfirm \
+     cmake         \
+     kvantum       \
+     lxqt-qtplugin \
+     qt6ct
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
-get-debloated-pkgs --add-common --prefer-nano
+get-debloated-pkgs --add-common --prefer-nano qt6-base-mini
 
-# Comment this out if you need an AUR package
-make-aur-package uefitool-ng
+echo "Building stable version of UEFITool..."
+echo "---------------------------------------------------------------"
+REPO="https://github.com/LongSoft/UEFITool"
+VERSION="$(curl -s https://api.github.com/repos/LongSoft/UEFITool/releases/latest | grep '"tag_name"' | cut -d '"' -f 4)"
+git clone --depth 1 "$REPO" ./UEFITool
+echo "$VERSION" > ~/version
 
-# If the application needs to be manually built that has to be done down here
-
-# if you also have to make nightly releases check for DEVEL_RELEASE = 1
-#
-# if [ "${DEVEL_RELEASE-}" = 1 ]; then
-# 	nightly build steps
-# else
-# 	regular build steps
-# fi
+mkdir -p ./AppDir/bin
+cd ./UEFITool
+git checkout "$VERSION"
+cmake ./ -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build -j$(nproc)
+mv -v build/UEFIExtract/uefiextract build/UEFIFind/uefifind build/UEFITool/uefitool ../AppDir/bin
