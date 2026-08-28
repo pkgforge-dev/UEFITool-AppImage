@@ -13,7 +13,7 @@ export QT_DIR=qt6
 export ALWAYS_SOFTWARE=1
 
 # Deploy dependencies
-quick-sharun ./AppDir/bin/uefitool
+quick-sharun ./AppDir/bin/*
 
 # Turn AppDir into AppImage
 quick-sharun --make-appimage
