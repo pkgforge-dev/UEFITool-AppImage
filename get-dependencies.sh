@@ -31,7 +31,7 @@ get-debloated-pkgs --add-common --prefer-nano
 echo "Building UEFITool..."
 echo "---------------------------------------------------------------"
 REPO="https://github.com/LongSoft/UEFITool"
-VERSION="$(git ls-remote "$REPO" HEAD | cut -c 1-9 | head -1)"
+VERSION="$(curl -s https://api.github.com/repos/LongSoft/UEFITool/releases/latest | grep '"tag_name"' | cut -d '"' -f 4)"
 git clone "$REPO" ./UEFITool
 echo "$VERSION" > ~/version
 
