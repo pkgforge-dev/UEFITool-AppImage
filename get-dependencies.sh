@@ -27,3 +27,14 @@ make-aur-package uefitool-ng
 # else
 # 	regular build steps
 # fi
+echo "Building UEFITool..."
+echo "---------------------------------------------------------------"
+REPO="https://github.com/LongSoft/UEFITool"
+VERSION="$(git ls-remote "$REPO" HEAD | cut -c 1-9 | head -1)"
+git clone "$REPO" ./UEFITool
+echo "$VERSION" > ~/version
+
+mkdir -p ./AppDir/bin
+cd ./UEFITool
+cmake -S ./ -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build 
