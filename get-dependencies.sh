@@ -39,4 +39,4 @@ mkdir -p ./AppDir/bin
 cd ./UEFITool
 cmake -S ./ -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build -j$(nproc)
-mv -v build/uefiextract build/uefifind build/uefitool ../AppDir/bin
+mv -v build/UEFIExtract/uefiextract build/UEFIFind/uefifind build/UEFITool/uefitool ../AppDir/bin
