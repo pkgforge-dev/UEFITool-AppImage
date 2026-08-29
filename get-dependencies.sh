@@ -10,12 +10,11 @@ pacman -Syu --noconfirm \
      cmake         \
      kvantum       \
      lxqt-qtplugin \
-     qt6-base      \
      qt6ct
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
-get-debloated-pkgs --add-common --prefer-nano
+get-debloated-pkgs --add-common --prefer-nano qt6-base-mini
 
 echo "Building stable version of UEFITool..."
 echo "---------------------------------------------------------------"
