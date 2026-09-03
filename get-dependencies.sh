@@ -25,6 +25,7 @@ echo "$VERSION" > ~/version
 
 mkdir -p ./AppDir/bin
 cd ./UEFITool
+git checkout "$VERSION"
 cmake -S ./ -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build -j$(nproc)
 mv -v build/UEFIExtract/uefiextract build/UEFIFind/uefifind build/UEFITool/uefitool ../AppDir/bin
